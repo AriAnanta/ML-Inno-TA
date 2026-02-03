@@ -1,0 +1,20 @@
+{
+  "target": "status_gizi_tbu",
+  "model_name": "FocalOversample_LightGBM_AggressiveROS_NoWeight",
+  "f1_macro": 0.643841412786613,
+  "recall_macro": 0.5868488334931288,
+  "precision_macro": 0.7566942551119766,
+  "accuracy": 0.8806818181818182,
+  "per_class_f1": {
+    "0": 0.5,
+    "1": 0.47058823529411764,
+    "2": 0.9381107491856677,
+    "3": 0.6666666666666666
+  },
+  "per_class_recall": {
+    "0": 0.5,
+    "1": 0.38095238095238093,
+    "2": 0.9664429530201343,
+    "3": 0.5
+  }
+}

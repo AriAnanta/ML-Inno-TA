@@ -1,0 +1,20 @@
+{
+  "target": "status_gizi_bbtb",
+  "model_name": "ThresholdOpt_CatBoost_AggressiveROS_NoWeight_ThresholdOpt",
+  "f1_macro": 0.8239332861857614,
+  "recall_macro": 0.7782312925170068,
+  "precision_macro": 0.8974358974358975,
+  "accuracy": 0.9147727272727273,
+  "per_class_f1": {
+    "0": 1.0,
+    "1": 0.5833333333333334,
+    "2": 0.9504950495049505,
+    "3": 0.7619047619047619
+  },
+  "per_class_recall": {
+    "0": 1.0,
+    "1": 0.4666666666666667,
+    "2": 0.9795918367346939,
+    "3": 0.6666666666666666
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "kategori_pekerjaan_kk": [
+    "Buruh Harian/Serabutan",
+    "Karyawan Swasta/Buruh Tetap",
+    "Lainnya",
+    "Ojek Online/Driver",
+    "PNS/BUMN/Pemerintah",
+    "Tidak Bekerja",
+    "Tidak Diketahui/Lainnya",
+    "Wiraswasta/Pedagang"
+  ],
+  "kategori_penyakit_balita": [
+    "Demam",
+    "ISPA/Respirasi",
+    "Lainnya",
+    "Pencernaan",
+    "Penyakit Serius/Kronis",
+    "Tidak Sakit"
+  ],
+  "kategori_penyakit_dominan": [
+    "Demam/Malaria",
+    "Gangguan Pencernaan (Diare)",
+    "ISPA (Batuk/Pilek)",
+    "Lainnya/Tidak Jelas",
+    "Penyakit Lainnya",
+    "Penyakit Serius (TBC/Paru/Neurologis)",
+    "Sehat/Tidak Sakit"
+  ],
+  "kategori_intervensi_utama": [
+    "Edukasi Gizi Saja",
+    "Intensif (RUTF/Rujukan)",
+    "Suplementasi (PMT)",
+    "Tidak Ada Intervensi"
+  ],
+  "kategori_komplikasi_lahir": [
+    "Gangguan Pencernaan",
+    "Gangguan Pernapasan",
+    "Kelainan Jantung",
+    "Lainnya",
+    "Tidak Ada Komplikasi"
+  ],
+  "Siapa yang biasanya menentukan makanan apa yang dimakan oleh anak di rumah? ": [
+    "Ayah",
+    "Bersama (Ibu dan Ayah)",
+    "Ibu",
+    "Nenek",
+    "Nenek/Kakek"
+  ],
+  "jenis_sanitasi": [
+    "Buang air besar di sungai, kebun, atau tempat terbuka",
+    "Toilet atau jamban dengan tangki penampung kotoran (septic tank)",
+    "Toilet atau jamban tanpa tangki penampung, langsung keluar ke selokan"
+  ],
+  "kualitas_air_minum": [
+    "Air tercemar/tidak layak",
+    "Bersih (Galon/Masak)",
+    "Bersih tanpa pengolahan (Galon/Air mineral kemasan)",
+    "Diolah/dimasak"
+  ]
+}
