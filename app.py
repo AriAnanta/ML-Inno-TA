@@ -276,7 +276,12 @@ SCALE_COLUMNS = [
     'ZS BB/U', 'ZS TB/U', 'ZS BB/TB'
 ]
 
-MODEL_FEATURES = ['Jenis Kelamin Balita'] + SCALE_COLUMNS
+# Nama kolom yang diharapkan oleh model (XGBoost)
+MODEL_FEATURES = [
+    'JK', 'Berat', 'Tinggi', 'LiLA', 'Age_Days', 'Age_Months', 
+    'BB_TB_Ratio', 'Berat_x_Tinggi', 'LiLA_x_Berat', 
+    'ZS_BBU', 'ZS_TBU', 'ZS_BBTB'
+]
 
 def preprocess_input(data: BalitaInput) -> pd.DataFrame:
     # Convert Pydantic model to DataFrame
@@ -332,9 +337,6 @@ def preprocess_input(data: BalitaInput) -> pd.DataFrame:
         input_df['JK'] = normalized.map({'L': 1, 'P': 0})
     input_df['sex'] = input_df['JK'].map({1: 'M', 0: 'F'})
 
-    # Simpan fitur sesuai nama saat training
-    input_df['Jenis Kelamin Balita'] = input_df['JK']
-
     if input_df['JK'].isna().any():
         bad_value = input_df['Jenis_Kelamin_Balita'].iloc[0]
         raise ValueError(f'Jenis_Kelamin_Balita tidak valid: "{bad_value}". Gunakan Laki-Laki atau Perempuan.')
@@ -387,7 +389,15 @@ def preprocess_input(data: BalitaInput) -> pd.DataFrame:
     scaled_df = pd.DataFrame(scaled_features, columns=SCALE_COLUMNS)
 
     final_df = scaled_df.copy()
-    final_df['Jenis Kelamin Balita'] = input_df['Jenis Kelamin Balita'].values[0] # Assuming single row input
+    
+    # Rename ZS columns from spaces/slashes to underscores for the model
+    final_df = final_df.rename(columns={
+        'ZS BB/U': 'ZS_BBU',
+        'ZS TB/U': 'ZS_TBU',
+        'ZS BB/TB': 'ZS_BBTB'
+    })
+    
+    final_df['JK'] = input_df['JK'].values[0] # Assuming single row input
 
     final_df = final_df[MODEL_FEATURES]
     return final_df
