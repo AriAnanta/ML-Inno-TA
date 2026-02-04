@@ -1,5 +1,6 @@
 import json
 import re
+import os
 from pathlib import Path
 from typing import Any, Dict, Optional, Union
 
@@ -7,9 +8,26 @@ import pandas as pd
 import numpy as np
 import joblib
 from datetime import date, datetime
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Security, Depends
+from fastapi.security.api_key import APIKeyHeader
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, validator, create_model
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# --- Security Configuration ---
+API_KEY_NAME = "X-API-KEY"
+API_KEY = os.getenv("API_KEY", "growell123")  # Gunakan default hanya jika .env tidak ada
+api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=True)
+
+async def get_api_key(header_key: str = Security(api_key_header)):
+    if header_key == API_KEY:
+        return header_key
+    raise HTTPException(
+        status_code=403, detail="Could not validate API Key"
+    )
 
 # Try importing pygrowup2 first, fallback to pygrowup
 try:
@@ -955,7 +973,7 @@ def _ta_predict_single(model: Any, features: pd.DataFrame, target: str) -> Dict[
 
 # --- 4. Prediction Endpoint ---
 
-@app.post("/predict")
+@app.post("/predict", dependencies=[Depends(get_api_key)])
 async def predict(data: BalitaInput):
     try:
         processed_input = preprocess_input(data)
@@ -988,7 +1006,7 @@ def health_check() -> Dict[str, str]:
     return {"status": "ok"}
 
 
-@app.post("/predict-ta")
+@app.post("/predict-ta", dependencies=[Depends(get_api_key)])
 def predict_status_gizi_ta(payload: TAPredictRequest) -> Dict[str, Any]:
     try:
         if hasattr(payload.data, "model_dump"):
