@@ -26,7 +26,7 @@ async def get_api_key(header_key: str = Security(api_key_header)):
     if header_key == API_KEY:
         return header_key
     raise HTTPException(
-        status_code=403, detail="Could not validate API Key"
+        status_code=403, detail="Engga ada API KEY nya"
     )
 
 # Try importing pygrowup2 first, fallback to pygrowup

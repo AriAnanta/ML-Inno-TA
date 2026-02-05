@@ -3,8 +3,12 @@
 
 ## Instalasi
 
-1. Masuk ke folder backend `ml`.
+1. Masuk ke folder backend `ml_baru`.
 2. Install dependencies dari `requirements.txt`.
+3. Buat file `.env` dan tambahkan API Key:
+   ```env
+   API_KEY=growell123
+   ```
 
 ## Jalankan Server
 
@@ -30,6 +34,7 @@ Model TA (input gabungan kader + orang tua).
 
 ## Request Headers
 - `Content-Type: application/json`
+- `X-API-KEY: <your_api_key>` (Wajib untuk autentikasi)
 
 ## Payload (Request Body)
 
